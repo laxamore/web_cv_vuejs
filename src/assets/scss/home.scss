@@ -1,0 +1,214 @@
+@import "./config.scss";
+@import "./responsive.scss";
+
+.home{
+    display: flex;
+}
+
+.front {
+    margin-right: 100;
+    margin-top: 15vh;
+    width: 100%;
+    text-align: center;
+    color: $primaryWordColor;
+
+    .icon {
+        a {
+            position: relative;
+            color: $primaryWordColor;
+            padding: 0 1.5rem;
+            top: 25vh;
+            text-decoration: none;
+
+            &:hover {
+                transition: all 1s;
+                color: $secondWordColor;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 60px;
+        padding: 1rem;
+    }
+    
+    h2 {
+        padding: 0.5rem;
+    }
+}
+
+.secondWord {
+    color: $secondWordColor;
+}
+
+.nav-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+
+    div {
+        width: 35px;
+        height: 5px;
+        background-color: $primaryWordColor;
+        margin: 6px 0;
+    }
+
+    button {
+        outline: none;
+        background: none;
+        border: none;
+        transition: all .5s;
+        transform: translate(0);
+
+        div {
+            &:nth-child(1) {
+                transition: all .5s;
+                transform: rotate(0deg) translate(0, 0);
+            }
+            
+            &:nth-child(2) {
+                transition: all .5s;
+                opacity: 1;
+            }
+            
+            &:nth-child(3) {
+                transition: all .5s;
+                transform: rotate(0deg) translate(0, 0);
+            }
+        }
+    }
+
+    .show {
+        div {
+            &:nth-child(1) {
+                transition: all .5s;
+                transform: rotate(45deg) translate(7px, 8px);
+            }
+            
+            &:nth-child(2) {
+                transition: all .5s;
+                opacity: 0;
+            }
+            
+            &:nth-child(3) {
+                transition: all .5s;
+                transform: rotate(-45deg) translate(7px, -9px);
+            }
+        }
+    }
+}
+
+.sidebar {
+    transition: all .5s;
+    height: 100vh;
+    width: 25vw;
+    position: absolute;
+    left: -25vw;
+    background: rgba($sidebarColor, 0.95);
+    align-items: center;
+
+    .photo {
+        padding-top: 10vh;
+        img {
+            border: 3px solid transparent;
+            border-color: $secondWordColor;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .line {
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        width: 92%;
+        margin-left: 4%;
+        margin-right: 4%;
+        height: 5px;
+        min-height: auto;
+        background: $secondWordColor;
+    }
+
+    &.show {
+        transition: all 0.5s;
+        left: 0;
+        z-index: 1;
+        text-align: center;
+    }
+
+    ul {
+        font-size: 24px;
+        margin-right: 45px;
+        margin-left: 0;
+        top: 300px;
+
+        li {
+            padding: 20px;
+            list-style: none;
+            font-weight: bold;
+
+            a {
+                color: $primaryWordColor;
+                text-decoration: none;
+
+                &:hover {
+                    transition: all .5s;
+                    color: $secondWordColor;
+                }
+            }
+
+            &.active {
+                a {
+                    color: $secondWordColor;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    z-index: 2;
+    transition: all .5s;
+    height: 100vh;
+    width: 75vw;
+    left: 100vw;
+    position: absolute;
+    background: rgba($contentColor, .99);
+    opacity: 0;
+
+    div {
+        position: absolute;
+        margin-bottom: 2vw;
+        width: 100%;
+        height: 100%;
+        font-size: 2.5vw;
+        color: $contentWordColor;
+        transition: all .5s; 
+        opacity: 0;
+
+        button {
+            display: none;
+        }
+
+        &.show {
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            opacity: 1;
+            div {
+                height: auto;
+                opacity: 1;
+                p {
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    &.show {
+        transition: all .5s;
+        opacity: 1;
+        left: 25vw;
+    }
+}
